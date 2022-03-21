@@ -1,14 +1,38 @@
 // chrome://extensions/
 
 const inputBtn = document.getElementById("input-btn")
+const delBtn = document.getElementById("delete-btn")
 const inputEl = document.getElementById("input-el")
 const ulEl = document.getElementById("ul-web")
-let myLeads = [  ]
+let myLeads = []
+const leadsFromLocalStorage = JSON.parse( localStorage.getItem("myLeads") )
+
+
+renderStoredLeads()
+
+
+function renderStoredLeads() {
+    console.log(localStorage)
+    console.log(leadsFromLocalStorage)
+    
+    if (leadsFromLocalStorage) {
+        myLeads = leadsFromLocalStorage
+        renderLeads()
+    }
+}
 
 inputBtn.addEventListener("click", function() {
     myLeads.push(inputEl.value)
-    addListItem()
-    // renderLeads()
+    // addListItem()
+    inputEl.value = ""
+    localStorage.setItem("myLeads", JSON.stringify(myLeads) )
+    renderLeads()
+})
+
+delBtn.addEventListener("dblclick", function() {
+    localStorage.clear()
+    myLeads = []
+    renderLeads()
 })
 
 function addListItem() {
