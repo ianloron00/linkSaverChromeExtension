@@ -28,6 +28,10 @@ button {
     box-sizing: border-box;
 }
 
+button:active {
+    transform: scale(calc(0.9));
+}
+
 button#delete-btn {
     color: rgb(37, 160, 37);
     background: transparent;
@@ -43,13 +47,14 @@ ul  {
 li {
     margin: 3px 0;
     text-align: left;
+    color: royalblue;
 }
 
-li a {
+a {
     color:rgb(37, 160, 37);
     text-decoration: none;
 }
 
-li a:hover {
+li:hover {
     text-decoration: underline;
 }
